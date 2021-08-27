@@ -1,5 +1,4 @@
-# TwitterTrendingPulls
-Twitter Trending Pulls for MLSE Application
+# Twitter Trending Topics for MLSE Application
 
 Hello MLSE Data Science/Eng + Software Engineering Teams!
 
