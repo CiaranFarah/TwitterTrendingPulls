@@ -21,7 +21,7 @@ def daily_snapshot():
     snapshot_df.drop(columns=["url", "promoted_content", "query"], inplace=True)  # Drop irrelevant columns for snapshot
     snapshot_df_string = snapshot_df.to_string(index=False, columns=["name", "tweet_volume"])
 
-    file_string = "TwitterSnapshot-" + current_date
+    file_string = "TwitterSnapshot-" + current_date + ".txt"
     daily_snapshot_file = open(file_string, "x")
     daily_snapshot_file.write("Twitter Daily Trending Topics in Canada\n")
     daily_snapshot_file.write(current_date + "\n")
