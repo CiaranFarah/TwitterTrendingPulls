@@ -1,0 +1,39 @@
+Twitter Daily Trending Topics in Canada
+2021-08-30
+                    name  tweet_volume
+                 Woodley      223900.0
+                   #VWFC           NaN
+                 Serrano       12938.0
+                   Tweek           NaN
+                  Boxing       90551.0
+                  Canelo           NaN
+                #ForTheW           NaN
+            #ShowtimePPV           NaN
+               Whitecaps           NaN
+              Tommy Fury           NaN
+               Cleveland       21918.0
+                   Logan       27649.0
+                YouTuber       56731.0
+ #90dayfiancetheotherway           NaN
+         #TheWalkingDead           NaN
+                    Mets       64346.0
+          Cheryl Gallant           NaN
+                  stamps           NaN
+               Louisiana      369427.0
+             New Orleans      209851.0
+                  Fisman           NaN
+                Ed Asner      157979.0
+                  Maggie       15844.0
+                    Ohio       34071.0
+                 Cantlay       20501.0
+                Yorkdale           NaN
+                  Bryson       18995.0
+                   Toole           NaN
+               Lou Grant       43234.0
+                   Perry       75563.0
+                  #NWA73       12167.0
+                #ONStorm           NaN
+                   #RHOP       31501.0
+                #Bombers           NaN
+        #BMWChampionship           NaN
+                   #onwx           NaN
