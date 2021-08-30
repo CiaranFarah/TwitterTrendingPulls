@@ -1,10 +1,9 @@
 import tweepy
 import json
-from datetime import datetime
 import pandas as pd
 
 
-def twitter_pull(consumer_key, consumer_secret, access_token, access_token_secret):
+def twitter_pull(consumer_key, consumer_secret, access_token, access_token_secret, current_date):
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
 
@@ -12,7 +11,6 @@ def twitter_pull(consumer_key, consumer_secret, access_token, access_token_secre
 
     lat = 43.6435  # I used the lat + long of Scotiabank Arena
     long = -79.3791
-    current_date = datetime.today().strftime('%Y-%m-%d-%H-%M-%S')
 
     canadian_trends_info = api.trends_closest(lat, long)
     trends_dict = canadian_trends_info[0]
@@ -34,6 +32,6 @@ def twitter_pull(consumer_key, consumer_secret, access_token, access_token_secre
         json.dump(trending_topics_dict, file, indent=4)  # Indent for readability
 
     trends_df = pd.DataFrame(trending_topics_dict["trends"])
-    trends_df["Date"] = current_date  # Add date to dataframe for entry into database
+    trends_df["date"] = current_date  # Add date to dataframe for entry into database
 
     return trends_df
