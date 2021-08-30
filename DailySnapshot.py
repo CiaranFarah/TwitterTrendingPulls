@@ -1,33 +1,35 @@
-from datetime import datetime
 import json
-import os
 import pandas as pd
+import sqlalchemy
 
 
-def daily_snapshot():
-    files = os.listdir("../MLSEApplicationProject")
-    current_date = datetime.today().strftime('%Y-%m-%d')
+def create_daily_snapshot(db_engine, current_date):
+    query_string = "SELECT * FROM trending_topics WHERE date = '"+current_date+"'"  # Need quatations around date since postgres can't recognize it is a string and not a date format
 
-    todays_snapshot_file_name = [file for file in files if file.startswith(current_date)][0]  # Cycle project directory
-    # and find json file that was pulled from Twitter Pull Function, we take first instance to make this a string
+    daily_snapshot_df = pd.read_sql(sqlalchemy.text(query_string), db_engine)
+    daily_snapshot_df.rename(columns={"index": "trend_rank"}, inplace=True)  # Renamed for clarity
 
-    open_file = open(todays_snapshot_file_name)
-    trending_topics_dict = json.load(open_file)
+    daily_snapshot_df.drop(columns=["url", "promoted_content", "query"], inplace=True)
 
-    trends = trending_topics_dict["trends"]
-    snapshot_df = pd.DataFrame(trends)
-    snapshot_df["date"] = current_date
+    json_string = "TwitterSnapshot-" + current_date + ".json"
 
-    snapshot_df.drop(columns=["url", "promoted_content", "query"], inplace=True)  # Drop irrelevant columns for snapshot
-    snapshot_df_string = snapshot_df.to_string(index=False, columns=["name", "tweet_volume"])
+    daily_trends_dict = daily_snapshot_df.to_dict()  # Change DF to dictionary so it can easily be stored as JSON
 
+    with open(json_string, "w") as file:
+        json.dump(daily_trends_dict, file, indent=4)  # Indent for readability
+
+    snapshot_df_string = daily_snapshot_df.to_string(index=False, columns=["name", "tweet_volume"]) # Save as text file as well for quick readability
     file_string = "TwitterSnapshot-" + current_date + ".txt"
-    daily_snapshot_file = open(file_string, "x")
+    daily_snapshot_file = open(file_string, "w")
     daily_snapshot_file.write("Twitter Daily Trending Topics in Canada\n")
     daily_snapshot_file.write(current_date + "\n")
     daily_snapshot_file.write(snapshot_df_string)
 
     daily_snapshot_file.close()
 
-    return snapshot_df
+    return daily_snapshot_df
+
+
+
+
 
