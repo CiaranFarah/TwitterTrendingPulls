@@ -26,7 +26,7 @@ def twitter_pull(consumer_key, consumer_secret, access_token, access_token_secre
 
     trending_topics_dict = canadian_trending_topics[0]  # trends_place returns a list with 1 dictionary object
 
-    json_string = current_date + "-CanadianTrendingTwitterTopics.json"  # Making file name for json
+    json_string =  "CanadianTrendingTwitterTopics" + current_date + ".json"  # Making file name for json
 
     with open(json_string, "w") as file:
         json.dump(trending_topics_dict, file, indent=4)  # Indent for readability
