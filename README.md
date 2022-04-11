@@ -1,9 +1,3 @@
-# Twitter Trending Topics for MLSE Application
-
-Hello MLSE Data Science/Eng + Software Engineering Teams!
-
-This is an overview of my completed case study for my Data Engineer application.
-
 TwitterPull.py: 
 
 To pull the Twitter Data from the API I used the Tweepy Python library (https://www.tweepy.org/). I used the latitude and longitude of Scotiabank Arena to get the WOEID (Where on Earth ID) for Canada and used that for my get trends request. I stored the trending topics in a JSON file for historical purposes. I turned the return data from the API into a Pandas Dataframe so it can easily be sent to my Azure hosted postgreSQL database in main.py.
