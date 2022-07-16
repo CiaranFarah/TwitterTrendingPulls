@@ -8,6 +8,6 @@ When processing the data and making a daily snapshot I query the trending_topics
 
 main.py: 
 
-Finally, in my main script I run my Twitter Pull function and my Daily Snapshot Function. Since pulling from Twitter API requires my personal Twitter tokens, and for the database I needed my password, the passwords.txt file is not included in this Github project (I emailed this seperately). This script sends the trending topics to its own table in my PostgreSQL Database, as well as a table for the daily snapshots.
+Finally, in my main script I run my Twitter Pull function and my Daily Snapshot Function. Since pulling from Twitter API requires my personal Twitter tokens, and for the database I needed my password, the passwords.txt file is not included in this Github project. This script sends the trending topics to its own table in my PostgreSQL Database, as well as a table for the daily snapshots.
 
 I used Windows Task Scheduler (See xml file) to run my main.py every day at 1PM.
